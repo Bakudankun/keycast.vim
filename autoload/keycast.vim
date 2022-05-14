@@ -63,6 +63,9 @@ endfunction
 
 function! s:display_key(key) abort
   let ch = s:format(s:key2str(a:key))
+  if empty(filter(copy(ch), 'len(v:val) > 0'))
+    return
+  endif
 
   " Move existing popups
   let width = max(map(copy(ch), { _, v -> strwidth(v) }))
