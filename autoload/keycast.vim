@@ -77,7 +77,8 @@ function! s:display_key(key) abort
   \   "pos": "botright",
   \   "line": line,
   \   "col": col,
-  \   "callback": { id, _ -> s:handle_popup_close(id) }
+  \   "callback": { id, _ -> s:handle_popup_close(id) },
+  \   "zindex": 10000
   \ })
 
   let pos = {"line": line, "col": col, "width": width, "height": height}
@@ -138,7 +139,7 @@ function! s:move_to_top(positions, offset) abort
 endfunction
 
 function! keycast#start() abort
-  let s:filter_popup_id = popup_create('', {"filter": { _, key -> s:display_key(key)}, "zindex": 10000})
+  let s:filter_popup_id = popup_create("", {"filter": { _, key -> s:display_key(key)}, "mask": [[1, 1, 1, 1]]})
 endfunction
 
 function! keycast#stop() abort
