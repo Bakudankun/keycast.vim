@@ -33,4 +33,10 @@ let keycast#formatter = 'vanner'
 
 " Use banner (1)
 let keycast#formatter = 'banner_command'
+
+" Use normal string
+let keycast#formatter = 'raw'
+
+" Do not move up existing popups on <CR> (default: 0)
+let keycast#one_line = 1
 ```
