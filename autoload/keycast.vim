@@ -34,19 +34,23 @@ let s:ctrl_offest = 96
 let s:bottom_win_positions = {}
 let s:other_win_positions = {}
 
+let s:special_keys = {
+\   "\<BS>"         : '<BS>',
+\   "\<CR>"         : '<CR>',
+\   "\<Cmd>"        : '',
+\   "\<CursorHold>" : '',
+\   "\<Esc>"        : '<Esc>',
+\   "\<Ignore>"     : '',
+\   "\<Plug>"       : '<Plug>',
+\   "\<SNR>"        : '<SNR>',
+\   "\<Space>"      : '<Space>',
+\   "\<Tab>"        : '<Tab>',
+\ }
 
 function! s:key2str(key) abort
-  if a:key ==# "\<Esc>"
-    return '<Esc>'
-  elseif a:key ==# "\<CR>"
-    return '<CR>'
-  elseif a:key ==# "\<BS>"
-    return '<BS>'
-  elseif a:key ==# "\<Tab>"
-    return '<Tab>'
-  elseif a:key ==# " "
-    return '<Space>'
-  end
+  if has_key(s:special_keys, a:key)
+    return s:special_keys[a:key]
+  endif
 
   let nr = char2nr(a:key)
   let nr_without_ctrl = nr + s:ctrl_offest
