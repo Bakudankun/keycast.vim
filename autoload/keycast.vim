@@ -61,7 +61,7 @@ function! s:display_key(key) abort
   let ch = s:format(s:key2str(a:key))
 
   " Move existing popups
-  let width = max(map(copy(ch), { _, v -> len(v) }))
+  let width = max(map(copy(ch), { _, v -> strwidth(v) }))
   let height = len(ch)
   if a:key ==# "\<CR>"
     call s:move_existing_popups_to_top(height + 1)
