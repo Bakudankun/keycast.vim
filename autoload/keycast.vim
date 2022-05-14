@@ -55,7 +55,7 @@ function! s:key2str(key) abort
   let nr = char2nr(a:key)
   let nr_without_ctrl = nr + s:ctrl_offest
   if s:ch_a <= nr_without_ctrl && nr_without_ctrl <= s:ch_z
-    return "<C-" . nr2char(nr_without_ctrl) . ">"
+    return "<C-" . toupper(nr2char(nr_without_ctrl)) . ">"
   else
     return a:key
   endif
